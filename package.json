@@ -1,7 +1,7 @@
 {
   "name": "kibana_es_indexer",
   "version": "0.0.0",
-  "description": "An awesome Kibana plugin",
+  "description": "Transform any file into documents to be indexed in Elasticsearch",
   "main": "index.js",
   "scripts": {
     "lint": "eslint",

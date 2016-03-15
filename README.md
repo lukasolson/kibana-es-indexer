@@ -1,6 +1,6 @@
 # kibana_es_indexer
 
-> An awesome Kibana plugin
+> Transform any file into documents to be indexed in Elasticsearch.
 
 ---
 

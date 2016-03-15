@@ -1,0 +1,70 @@
+<div class="container kibana-es-indexer">
+  <div class="row">
+    <div class="col-sm-12"><h2>Indexer</h2></div>
+    <p>
+      This utility allows you to upload a file of any sort, then write a JavaScript function to transform the contents
+      of the file into documents to be indexed in Elasticsearch.
+    </p>
+  </div>
+
+  <form ng-submit="index(index.index, index.type, index.docs)" class="form-horizontal row">
+    <div class="form-group">
+      <label for="name" class="col-sm-2 control-label">Index</label>
+      <div class="col-sm-4">
+        <input type="text" class="form-control" id="name" ng-model="index.index" required />
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="type" class="col-sm-2 control-label">Type</label>
+      <div class="col-sm-4">
+        <input type="text" class="form-control" id="type" ng-model="index.type" required />
+      </div>
+    </div>
+
+    <div class="row">
+      <label class="col-sm-2 control-label"></label>
+      <div class="col-sm-10">
+        <button file-upload="upload(fileContents)" class="btn btn-default controls" ng-click>
+          <i aria-hidden="true" class="fa fa-upload"></i> Select File
+        </button>
+        <button type="submit" ng-disabled="!(index.index && index.type && index.docs.length)" class="btn btn-primary">Index Documents</button>
+      </div>
+    </div>
+  </form>
+
+  <div ng-if="fileContents.length">
+    <div class="row">
+      <h3>File Contents</h3>
+      <div class="col-sm-12">
+        <pre class="file-contents">{{fileContents | limitTo:10000}}</pre>
+      </div>
+    </div>
+
+    <div class="row">
+      <h3>Transform Function</h3>
+      <div ng-model="transformFunction" class="col-sm-12 ace-container" ui-ace="{ mode: 'javascript' }"></div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-12">
+        <button ng-click="transformFileContents(fileContents, transformFunction)" class="btn btn-default">Test Transform</button>
+      </div>
+    </div>
+
+    <div ng-if="index.docs.length">
+      <div class="row">
+        <h3>Sample Docs</h3>
+        <div class="col-sm-12">
+          <table class="table table=striped">
+            <tbody>
+              <tr ng-repeat="doc in index.docs | limitTo:10">
+                <td>{{doc}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
