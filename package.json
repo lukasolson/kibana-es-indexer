@@ -1,6 +1,6 @@
 {
   "name": "kibana_es_indexer",
-  "version": "0.0.0",
+  "version": "6.0.0-alpha1",
   "description": "Transform any file into documents to be indexed in Elasticsearch",
   "main": "index.js",
   "scripts": {

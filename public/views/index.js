@@ -1,5 +1,6 @@
 import {isArray, compact} from 'lodash';
 import 'ace';
+import chrome from 'ui/chrome';
 import uiModules from 'ui/modules';
 import uiRoutes from 'ui/routes';
 import 'ui/autoload/styles';
@@ -31,7 +32,7 @@ uiRoutes.when('/', {
     $scope.index = (index, type, docs) => {
       $http.post('../api/indexer/v1/index', {
         index, type, docs
-      }).then(reponse => console.log(response), error => console.log(error));
+      }).then(response => console.log(response), error => console.log(error));
     };
   }
 });
