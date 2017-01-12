@@ -1,7 +1,7 @@
 import transformBulk from '../../../lib/transform_bulk';
 
 export default function (server) {
-  const callWithRequest = server.plugins.elasticsearch.callWithRequest;
+  const { callWithRequest } = server.plugins.elasticsearch.getCluster('data');
 
   server.route({
     path: '/api/indexer/v1/index',
