@@ -7,7 +7,7 @@
     </p>
   </div>
 
-  <form ng-submit="index(index.index, index.type, index.docs)" class="form-horizontal row">
+  <form class="form-horizontal row">
     <div class="form-group">
       <label for="name" class="col-sm-2 control-label">Index</label>
       <div class="col-sm-4">
@@ -30,7 +30,6 @@
             <i aria-hidden="true" class="fa fa-upload"></i> Select File
           </button>
         </file-upload>
-        <button type="submit" ng-disabled="!(index.index && index.type && index.docs.length)" class="btn btn-primary">Index Documents</button>
       </div>
     </div>
   </form>
@@ -51,6 +50,7 @@
     <div class="row">
       <div class="col-sm-12">
         <button ng-click="transformFileContents(fileContents, transformFunction)" class="btn btn-default">Test Transform</button>
+        <button ng-click="index(index.index, index.type, index.docs)" ng-disabled="!(index.index && index.type && index.docs.length)" class="btn btn-primary">Index Documents</button>
       </div>
     </div>
 
