@@ -10,6 +10,11 @@ export default function (server) {
       const {index, type, docs} = request.payload;
       const body = transformBulk(index, type, docs);
       return callWithRequest(request, 'bulk', {body}).then(reply, reply);
+    },
+    config: {
+        payload: {
+            maxBytes: Math.pow(2, 31) - 1
+        }
     }
   });
 };
